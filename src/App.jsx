@@ -2,13 +2,15 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import OrderList from './components/orders/OrderList.jsx';
 import OrderDetails from './components/orders/OrderDetails.jsx';
-import './App.css'
+import UsersList from '/components/users/UsersList.jsx';
+import UsersDetail from '/components/users/UsersDetail.jsx';
+import './App.css';
 
 function App() {
-  const [token, setToken] = useState(() => localStorage.getItem("authToken"));//pending Yonas "authToken" local storage
+  const [token, setToken] = useState(() => localStorage.getItem("authToken"));
 
   useEffect(() => {
-    const storedToken = localStorage.getItem("authToken");//pending Yonas "authToken" local storage
+    const storedToken = localStorage.getItem("authToken");
     if (storedToken) {
       setToken(storedToken);
     }
@@ -17,13 +19,28 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/orders" element={token ? <OrderList token={token} /> : <Navigate to="/login" replace />}
+        {/* Orders */}
+        <Route
+          path="/orders"
+          element={token ? <OrderList token={token} /> : <Navigate to="/login" replace />}
         />
-        <Route path="/orders/:id" element={token ? <OrderDetails token={token} /> : <Navigate to="/login" replace />}
+        <Route
+          path="/orders/:id"
+          element={token ? <OrderDetails token={token} /> : <Navigate to="/login" replace />}
+        />
+
+        {/* Users */}
+        <Route
+          path="/users"
+          element={token ? <UsersList token={token} /> : <Navigate to="/login" replace />}
+        />
+        <Route
+          path="/users/:id"
+          element={token ? <UsersDetail token={token} /> : <Navigate to="/login" replace />}
         />
       </Routes>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;
