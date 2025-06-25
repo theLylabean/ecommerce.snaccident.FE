@@ -3,10 +3,12 @@ import { getProducts } from '../api/index.js';
 import { useNavigate } from 'react-router-dom';
 import SearchBar from './Searchbar.jsx';
 
-const Products = ({ products, setProducts }) => {
+const Products = ({ products, setProducts, setSingleProduct, searchTerm, setSearchTerm, searchResults, setSearchResults }) => {
     const navigate = useNavigate();
     const handleClick = (product) => {
         setSingleProduct(product);
+        setSearchTerm('');
+        setSearchResults([]);
         navigate(`/products/${product.id}`);
     }
 
@@ -27,14 +29,21 @@ const Products = ({ products, setProducts }) => {
                 <p>
                     Welcome to our products page! You'll find a wide variety of edibles, including a groovy Lemonade Drink!
                 </p>
-                <SearchBar />
+                <SearchBar 
+                    products={products}
+                    setProducts={setProducts}
+                    searchResults={searchResults}
+                    setSearchResults={setSearchResults}
+                    searchTerm={searchTerm}
+                    setSearchTerm={setSearchTerm}
+                />
             </div>
             <div className='products-page'>
                 <div className='products-container'>
                     {
                         searchResults.length > 0 ? (
                             searchResults.map((product) => {
-                                const {id, title, image_url, flavor, price, dose, total, quantity, strain, potency, description } = product;
+                                const {id, title, image_url, flavor, price, quantity } = product;
                                 if (!product || !product.id || !product.title) return null;
                                 return (
                                     <div
@@ -51,7 +60,6 @@ const Products = ({ products, setProducts }) => {
                                         <p>{quantity}</p>
                                         <p>{price}</p>
                                         <p>{flavor}</p>
-                                        <p>{description}</p>
                                         <button onClick={() => handleClick(product)}>
                                             More Info
                                         </button>
@@ -60,7 +68,28 @@ const Products = ({ products, setProducts }) => {
                             })
                         ) : (
                             Array.isArray(products) && products.map((product) => {
-                                const { id, title, image_url,  }
+                                const { id, title, image_url, flavor, price, quantity } = product;
+                                if (!product || !product.id || !product.title) return null;
+                                return (
+                                    <div
+                                        key={id}
+                                        className='product-card'
+                                    >
+                                        <h3>
+                                            {title}
+                                        </h3>
+                                        <img
+                                            className='product-image'
+                                            src={image_url}
+                                        />
+                                        <p>{quantity}</p>
+                                        <p>{price}</p>
+                                        <p>{flavor}</p>
+                                        <button onClick={() => handleClick(product)}>
+                                            More Info
+                                        </button>
+                                    </div>
+                                )
                             })
                         )
                     }
