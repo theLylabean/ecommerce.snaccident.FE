@@ -1,21 +1,23 @@
 // Display current user's orders and their reviews
 import { useEffect, useState } from "react";
 
-function UserReviews({ userId }) {
-    const [orders, setOrders] = useState([]);
+function UserReviews({ token }) {
+    const [orders, setOrders] = useState({});
 
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const res = await fetch(`/api/orders/${userId}`);
-                const data = await res.json();
-                setOrders(data);
+                const res = await fetch(`/api/orders/${id}`, {
+                    headers:{"Content-Type": "application/json", Authorization: `Bearer ${token}`}
+                });
+                const result = await res.json();
+                setOrders(result);
             } catch (err) {
                 console.error(err);
             }
         };
         fetchOrders();
-    }, [userId]);
+    }, [id]);
 
     return (
         <div>
