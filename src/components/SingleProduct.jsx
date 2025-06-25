@@ -1,9 +1,8 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { getSingleProduct } from "../api/index.js";
 
 const SingleProduct = ({ singleProduct, setSingleProduct }) => {
-    const [successMessage, setSuccessMessage] = useState('');
     const { id } = useParams();
     const navigate = useNavigate();
 
@@ -41,3 +40,5 @@ const SingleProduct = ({ singleProduct, setSingleProduct }) => {
             </>
     )
 }
+
+export default SingleProduct
