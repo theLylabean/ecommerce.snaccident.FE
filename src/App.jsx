@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
 import OrderList from './components/orders/OrderList.jsx';
 import OrderDetails from './components/orders/OrderDetails.jsx';
+import UsersList from './components/users/UsersList.jsx';
+import UsersDetail from './components/users/UsersDetail.jsx';
+import Products from './components/Products.jsx';
 import UsersList from './components/users/UsersList.jsx'; 
 import UsersDetail from './components/users/UsersDetail.jsx'; 
 import Login from './components/auth/Login.jsx';
@@ -11,7 +14,12 @@ import Account from './components/account/Account.jsx';
 import './App.css';
 
 function App() {
-  const [token, setToken] = useState(() => localStorage.getItem("authToken"));
+  const [token, setToken] = useState(() => localStorage.getItem("authToken"));//pending Yonas "authToken" local storage
+  const [products, setProducts] = useState([]);
+  const [singleProduct, setSingleProduct] = useState([]);
+  const [searchTerm, setSearchTerm] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
+  // const [token, setToken] = useState(() => localStorage.getItem("authToken"));
 
   useEffect(() => {
     const storedToken = localStorage.getItem("authToken");
@@ -21,7 +29,7 @@ function App() {
   }, []);
 
   return (
-    <Router>
+    <>
       <Navbar token={token} setToken={setToken} />
       <Routes>
         {/* Orders */}
@@ -43,6 +51,30 @@ function App() {
           path="/users/:id"
           element={token ? <UsersDetail token={token} /> : <Navigate to="/login" replace />}
         />
+        <Route
+          path='/products'
+          element={
+            <Products
+            products={products}
+            setProducts={setProducts}
+            singleProduct={singleProduct}
+            setSingleProduct={setSingleProduct}
+            searchResults={searchResults}
+            setSearchResults={setSearchResults}
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            />
+          }
+        />
+        {/* <Route
+          path='/products/:id'
+          element={
+            <SingleProduct
+            singleProduct={singleProduct}
+            setSingleProduct={setSingleProduct}
+            />
+          }
+        /> */}
 
         {/* Auth */}
         <Route path="/login" element={<Login setToken={setToken} />} />
@@ -57,7 +89,7 @@ function App() {
         {/* Home or redirect */}
         <Route path="/" element={<Navigate to={token ? "/account" : "/login"} replace />} />
       </Routes>
-    </Router>
+    </>
   );
 }
 
