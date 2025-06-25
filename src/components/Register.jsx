@@ -34,12 +34,36 @@ const Register = ({ setToken }) => {
     <div>
       <h2>Register</h2>
       <form onSubmit={handleRegister}>
-        <label>Username:
-          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
-        </label><br />
-        <label>Password:
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        </label><br />
+        <label>
+          Username:
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+        </label>
+        <br />
+        <label>
+          Email:
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </label>
+        <br />
+        <label>
+          Password:
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </label>
+        <br />
         <button type="submit">Register</button>
       </form>
       {error && <p style={{ color: 'red' }}>{error}</p>}
