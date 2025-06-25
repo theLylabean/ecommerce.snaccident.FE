@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Login = ({ setToken }) => {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ const Login = ({ setToken }) => {
       const res = await fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ username, password }),
       });
 
       if (!res.ok) throw new Error('Login failed');
@@ -25,7 +25,7 @@ const Login = ({ setToken }) => {
       setToken(data.token);
       navigate('/account');
     } catch (err) {
-      setError('Invalid email or password.');
+      setError('Invalid username or password.');
     }
   };
 
@@ -33,8 +33,8 @@ const Login = ({ setToken }) => {
     <div>
       <h2>Login</h2>
       <form onSubmit={handleLogin}>
-        <label>Email:
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <label>Username:
+          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
         </label><br />
         <label>Password:
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
