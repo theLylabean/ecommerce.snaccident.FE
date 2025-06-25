@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
 import OrderList from './components/orders/OrderList.jsx';
 import OrderDetails from './components/orders/OrderDetails.jsx';
@@ -13,7 +12,7 @@ import SingleProduct from './components/SingleProduct.jsx';
 import './App.css';
 
 function App() {
-  const [token, setToken] = useState(() => localStorage.getItem("authToken"));//pending Yonas "authToken" local storage
+  const [token, setToken] = useState(() => localStorage.getItem("authToken"));
   const [products, setProducts] = useState([]);
   const [singleProduct, setSingleProduct] = useState([]);
   const [searchTerm, setSearchTerm] = useState([]);
