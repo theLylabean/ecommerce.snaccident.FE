@@ -10,6 +10,7 @@ function App() {
   const [token, setToken] = useState(() => localStorage.getItem("authToken"));//pending Yonas "authToken" local storage
   const [products, setProducts] = useState([]);
   const [singleProduct, setSingleProduct] = useState([]);
+  // const [token, setToken] = useState(() => localStorage.getItem("authToken"));
 
   useEffect(() => {
     const storedToken = localStorage.getItem("authToken");
@@ -39,24 +40,6 @@ function App() {
         <Route
           path="/users/:id"
           element={token ? <UsersDetail token={token} /> : <Navigate to="/login" replace />}
-        />
-        <Route
-          path='/products'
-          element={
-            <Products
-            products={products}
-            setProducts={setProducts}
-            />
-          }
-        />
-        <Route
-          path='/products/:id'
-          element={
-            <SingleProduct
-            singleProduct={singleProduct}
-            setSingleProduct={setSingleProduct}
-            />
-          }
         />
         <Route
           path='/products'

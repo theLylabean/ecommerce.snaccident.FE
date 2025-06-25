@@ -1,6 +1,73 @@
+import { useEffect } from 'react';
+import { getProducts } from '../api/index.js';
+import { useNavigate } from 'react-router-dom';
+import SearchBar from './Searchbar.jsx';
 
-const Products = () => {
-    const handleClick = () => {
-        
+const Products = ({ products, setProducts }) => {
+    const navigate = useNavigate();
+    const handleClick = (product) => {
+        setSingleProduct(product);
+        navigate(`/products/${product.id}`);
     }
+
+    useEffect(() => {
+        const getProductsApi = async() => {
+            const response = await getProducts();
+            setProducts(response);
+        }
+        getProductsApi(); 
+    }, [])
+
+    return (
+        <>
+            <div className='products-header'>
+                <h1>
+                    A Snaccident Waiting to Happen!
+                </h1>
+                <p>
+                    Welcome to our products page! You'll find a wide variety of edibles, including a groovy Lemonade Drink!
+                </p>
+                <SearchBar />
+            </div>
+            <div className='products-page'>
+                <div className='products-container'>
+                    {
+                        searchResults.length > 0 ? (
+                            searchResults.map((product) => {
+                                const {id, title, image_url, flavor, price, dose, total, quantity, strain, potency, description } = product;
+                                if (!product || !product.id || !product.title) return null;
+                                return (
+                                    <div
+                                        key={id}
+                                        className='product-card'
+                                    >
+                                        <h3>
+                                            {title}
+                                        </h3>
+                                        <img
+                                            className='product-image'
+                                            src={image_url}
+                                        />
+                                        <p>{quantity}</p>
+                                        <p>{price}</p>
+                                        <p>{flavor}</p>
+                                        <p>{description}</p>
+                                        <button onClick={() => handleClick(product)}>
+                                            More Info
+                                        </button>
+                                    </div>
+                                )
+                            })
+                        ) : (
+                            Array.isArray(products) && products.map((product) => {
+                                const { id, title, image_url,  }
+                            })
+                        )
+                    }
+                </div>
+            </div>
+        </>
+    )
 }
+
+export default Products
