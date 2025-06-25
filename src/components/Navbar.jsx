@@ -11,7 +11,7 @@ const Navbar = ({ token, setToken }) => {
 
 return (
     <nav>
-        <h1>Name of Shop</h1>
+        <h1>A Snaccident Waiting to Happen!</h1>
         <ul>
             <li><Link to="/products">Products</Link></li>
             <li><Link to="/account">Account</Link></li>
