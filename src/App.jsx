@@ -57,6 +57,12 @@ function App() {
             <Products
             products={products}
             setProducts={setProducts}
+            singleProduct={singleProduct}
+            setSingleProduct={setSingleProduct}
+            searchResults={searchResults}
+            setSearchResults={setSearchResults}
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
             />
           }
         />
