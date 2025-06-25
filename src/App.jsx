@@ -6,11 +6,10 @@ import OrderDetails from './components/orders/OrderDetails.jsx';
 import UsersList from './components/users/UsersList.jsx';
 import UsersDetail from './components/users/UsersDetail.jsx';
 import Products from './components/Products.jsx';
-import UsersList from './components/users/UsersList.jsx'; 
-import UsersDetail from './components/users/UsersDetail.jsx'; 
-import Login from './components/auth/Login.jsx';
-import Register from './components/auth/Register.jsx';
-import Account from './components/account/Account.jsx';
+import Login from './components/Login.jsx';
+import Register from './components/Register.jsx';
+// import Account from './components/Account.jsx';
+import SingleProduct from './components/SingleProduct.jsx';
 import './App.css';
 
 function App() {
@@ -19,7 +18,6 @@ function App() {
   const [singleProduct, setSingleProduct] = useState([]);
   const [searchTerm, setSearchTerm] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
-  // const [token, setToken] = useState(() => localStorage.getItem("authToken"));
 
   useEffect(() => {
     const storedToken = localStorage.getItem("authToken");
@@ -66,7 +64,7 @@ function App() {
             />
           }
         />
-        {/* <Route
+        <Route
           path='/products/:id'
           element={
             <SingleProduct
@@ -74,7 +72,7 @@ function App() {
             setSingleProduct={setSingleProduct}
             />
           }
-        /> */}
+        />
 
         {/* Auth */}
         <Route path="/login" element={<Login setToken={setToken} />} />
