@@ -41,7 +41,7 @@ const Products = ({ products, setProducts, setSingleProduct, searchTerm, setSear
             <div className='products-page'>
                 <div className='products-container'>
                     {
-                        searchResults.length > 0 ? (
+                        searchResults?.length > 0 ? (
                             searchResults.map((product) => {
                                 const {id, title, image_url, flavor, price, quantity } = product;
                                 if (!product || !product.id || !product.title) return null;

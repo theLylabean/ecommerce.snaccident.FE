@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
 import OrderList from './components/orders/OrderList.jsx';
 import OrderDetails from './components/orders/OrderDetails.jsx';
-import UsersList from '/components/users/UsersList.jsx';
-import UsersDetail from '/components/users/UsersDetail.jsx';
+import UsersList from './components/users/UsersList.jsx';
+import UsersDetail from './components/users/UsersDetail.jsx';
+import Products from './components/Products.jsx';
 import './App.css';
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
   }, []);
 
   return (
-    <Router>
+    <>
       <Navbar token={token} setToken={setToken} />
       <Routes>
         {/* Orders */}
@@ -64,7 +65,7 @@ function App() {
           }
         /> */}
       </Routes>
-    </Router>
+    </>
   );
 }
 
