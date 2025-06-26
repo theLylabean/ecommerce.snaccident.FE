@@ -47,7 +47,7 @@ const SingleProduct = ({ singleProduct, setSingleProduct }) => {
 
                     <div>
                     {token ? (
-                        <ReviewForm/>
+                        <ReviewForm productId={id}/>
                     ) : (
                         <p>Please log in to submit a review.</p>
                     )}

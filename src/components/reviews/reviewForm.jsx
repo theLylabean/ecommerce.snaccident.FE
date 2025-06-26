@@ -16,7 +16,7 @@ function ReviewForm({ productId, onReviewSubmit }) {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${token}`
                 },
-                body: JSON.stringify({ rating, comment }),
+                body: JSON.stringify({ rating: Number(rating), comment, product_id:productId}),
             });
             if (res.ok) {
                 const newReview = await res.json();
