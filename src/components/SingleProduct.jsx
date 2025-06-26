@@ -1,6 +1,8 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getSingleProduct } from "../api/index.js";
+import Reviews from "./reviews/reviews.jsx";
+import ReviewForm from "./reviews/reviewForm.jsx";
 
 const SingleProduct = ({ singleProduct, setSingleProduct }) => {
     const { id } = useParams();
@@ -35,6 +37,14 @@ const SingleProduct = ({ singleProduct, setSingleProduct }) => {
                                 onClick={() => navigate(-1)}>
                                 Return to Product List
                             </button>
+                    </div>
+                    
+                    <div>
+                        <Reviews />
+                    </div>
+
+                    <div>
+                        <ReviewForm />
                     </div>
                 </div>
             </>

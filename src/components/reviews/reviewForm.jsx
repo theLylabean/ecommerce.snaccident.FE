@@ -8,10 +8,13 @@ function ReviewForm({ productId, onReviewSubmit }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await fetch(`/api/reviews/${productId}`, {
+            const token = localStorage.getItem("authToken");
+
+            const res = await fetch(`/api/products/${productId}/reviews`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
                 },
                 body: JSON.stringify({ rating, comment }),
             });
