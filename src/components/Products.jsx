@@ -16,11 +16,11 @@ const Products = ({ products, setProducts, setSingleProduct, searchTerm, setSear
     }
 
     useEffect(() => {
-        const getProductsApi = async() => {
+        const getProductsApi = async () => {
             const response = await getProducts();
             setProducts(response);
         }
-        getProductsApi(); 
+        getProductsApi();
     }, [])
 
     return (
@@ -32,7 +32,7 @@ const Products = ({ products, setProducts, setSingleProduct, searchTerm, setSear
                 <p>
                     Welcome to our products page! You'll find a wide variety of edibles, including a groovy Lemonade Drink!
                 </p>
-                <SearchBar 
+                <SearchBar
                     products={products}
                     setProducts={setProducts}
                     searchResults={searchResults}
@@ -46,7 +46,7 @@ const Products = ({ products, setProducts, setSingleProduct, searchTerm, setSear
                     {
                         searchResults?.length > 0 ? (
                             searchResults.map((product) => {
-                                const {id, title, image_url, flavor, price, quantity } = product;
+                                const { id, title, image_url, flavor, price, quantity } = product;
                                 if (!product || !product.id || !product.title) return null;
                                 return (
                                     <div
@@ -90,6 +90,9 @@ const Products = ({ products, setProducts, setSingleProduct, searchTerm, setSear
                                         <p>{flavor}</p>
                                         <button onClick={() => handleClick(product)}>
                                             More Info
+                                        </button>
+                                        <button onClick={() => handleAddToCart(product)}>
+                                            Add to Cart
                                         </button>
                                     </div>
                                 )

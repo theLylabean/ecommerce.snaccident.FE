@@ -11,8 +11,10 @@ const Login = ({ setToken }) => {
     e.preventDefault();
     setError(null);
 
+    const BASE_URL = 'http://localhost:3000';
+
     try {
-      const res = await fetch('/api/auth/login', {
+      const res = await fetch(`${BASE_URL}/api/users/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
