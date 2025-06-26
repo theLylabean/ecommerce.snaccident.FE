@@ -70,11 +70,11 @@ const Products = ({ products, setProducts, setSingleProduct, searchTerm, setSear
                                 if (!product || !product.id || !product.title) return null;
                                 return (
                                     <div key={id} className='product-card'>
-                                        <h3>{title}</h3>
+                                        <h2><u>{title}</u></h2>
                                         <img className='product-image' src={image_url} />
-                                        <p>{quantity}</p>
-                                        <p>{price}</p>
-                                        <p>{flavor}</p>
+                                        <p>Quantity: {quantity}</p>
+                                        <p>Price: ${price}</p>
+                                        <p>Flavor: {flavor}</p>
                                         <button onClick={() => handleClick(product)}>More Info</button>
                                         <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
                                     </div>

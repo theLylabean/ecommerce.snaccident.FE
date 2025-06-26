@@ -15,6 +15,7 @@ const SingleProduct = ({ singleProduct, setSingleProduct }) => {
             const response = await getSingleProduct(id);
             setSingleProduct(response);
         }
+        getProductDetailsApi();
     }, []);
 
     return (
@@ -26,14 +27,14 @@ const SingleProduct = ({ singleProduct, setSingleProduct }) => {
                                 className="single-product-img"
                                 src={singleProduct.image_url} 
                             />
-                            <p>{singleProduct.price}</p>
-                            <p>{singleProduct.dose}</p>
-                            <p>{singleProduct.total}</p>
-                            <p>{singleProduct.quantity}</p>
-                            <p>{singleProduct.strain}</p>
-                            <p>{singleProduct.potency}</p>
-                            <p>{singleProduct.flavor}</p>
-                            <p className='description'>{singleProduct.description}</p>
+                            <p>Quantity: {singleProduct.quantity}</p>
+                            <p>Price: ${singleProduct.price}</p>
+                            <p>Dose: {singleProduct.dose}</p>
+                            <p>Total: {singleProduct.total}</p>
+                            <p>Strain: {singleProduct.strain}</p>
+                            <p>Potency: {singleProduct.potency}</p>
+                            <p>Flavor: {singleProduct.flavor}</p>
+                            <p className='description'>Description: {singleProduct.description}</p>
                             <button 
                                 className='back-button'
                                 onClick={() => navigate(-1)}>
