@@ -23,6 +23,7 @@ const Login = ({ setToken }) => {
       if (!res.ok) throw new Error('Login failed');
       const data = await res.json();
 
+      localStorage.setItem('token', data.token);
       localStorage.setItem('authToken', data.token);
       setToken(data.token);
       navigate('/account');

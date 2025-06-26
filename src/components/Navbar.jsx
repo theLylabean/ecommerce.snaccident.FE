@@ -1,4 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
+import Cart from "./Cart";
+
 import "./Navbar.css";
 
 const Navbar = ({ token, setToken }) => {
@@ -15,6 +17,7 @@ const Navbar = ({ token, setToken }) => {
                 <ul>
                     <li><Link to="/products">Products</Link></li>
                     <li><Link to="/account">Account</Link></li>
+                    <Cart />
                     {token ? (
                         <li><button onClick={handleLogout}>Logout</button></li>
                     ) : (

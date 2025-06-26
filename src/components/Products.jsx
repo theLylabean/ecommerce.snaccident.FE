@@ -16,7 +16,7 @@ const Products = ({ products, setProducts, setSingleProduct, searchTerm, setSear
     };
 
     const handleAddToCart = (product) => {
-        addToCart(product);
+        addToCart(product.id);
     };
 
     useEffect(() => {

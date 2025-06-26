@@ -5,20 +5,18 @@ const CartContext = createContext();
 export const CartProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState([]);
 
-    const addToCart = (product) => {
-        setCartItems((prevItems) => {
-            const existingItem = prevItems.find((item) => item.id === product.id);
-            if (existingItem) {
-                return prevItems.map((item) =>
-                item.id === product.id 
-            ? { ...item, quantity: item.quantity + 1}
-        : item
-    );
-            } else {
-                return [ ...prevItems, { ...product, quantity: 1 }];
-            }
-        })
-    };
+    const addToCart = async (productId) => {
+        const token = localStorage.getItem('token');
+        const res = await fetch('http://localhost:3000/api/users/addtocart',{
+            method: 'POST',
+            headers: {Authorization: `Bearer ${token}`, 
+            'Content-Type': 'application/json'},
+            body: JSON.stringify({productId})
+        });
+        const added = await res.json();
+        return added;
+    }
+
     const removeFromCart = (productId) => {
         setCartItems((prevItems) => 
             prevItems.filter((item) => item.id !== productId)

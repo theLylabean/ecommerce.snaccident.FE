@@ -82,11 +82,11 @@ function App() {
         <Route path="/login" element={<Login setToken={setToken} />} />
         <Route path="/register" element={<Register setToken={setToken} />} />
 
-        {/* Account 
+        {/* Account*/}
         <Route
           path="/account"
           element={token ? <Account token={token} /> : <Navigate to="/login" replace />}
-        />*/}
+        />
 
         {/* Home or redirect */}
         <Route path="/" element={<Navigate to={token ? "/account" : "/login"} replace />} />

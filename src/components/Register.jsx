@@ -24,7 +24,8 @@ const Register = ({ setToken }) => {
       if (!res.ok) throw new Error('Registration failed');
       const data = await res.json();
 
-      localStorage.setItem('authToken', data.token);
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('authToken', data.token)
       setToken(data.token);
       navigate('/account');
     } catch (err) {
