@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Routes, Route, Navigate  } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
 import OrderList from './components/orders/OrderList.jsx';
 import OrderDetails from './components/orders/OrderDetails.jsx';
 import UsersList from './components/users/UsersList.jsx';
 import UsersDetail from './components/users/UsersDetail.jsx';
 import Products from './components/Products.jsx';
+import Cart from './components/Cart.jsx';
 import Login from './components/Login.jsx';
 import Register from './components/Register.jsx';
 // import Account from './components/Account.jsx';
@@ -53,14 +54,14 @@ function App() {
           path='/products'
           element={
             <Products
-            products={products}
-            setProducts={setProducts}
-            singleProduct={singleProduct}
-            setSingleProduct={setSingleProduct}
-            searchResults={searchResults}
-            setSearchResults={setSearchResults}
-            searchTerm={searchTerm}
-            setSearchTerm={setSearchTerm}
+              products={products}
+              setProducts={setProducts}
+              singleProduct={singleProduct}
+              setSingleProduct={setSingleProduct}
+              searchResults={searchResults}
+              setSearchResults={setSearchResults}
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
             />
           }
         />
@@ -68,21 +69,24 @@ function App() {
           path='/products/:id'
           element={
             <SingleProduct
-            singleProduct={singleProduct}
-            setSingleProduct={setSingleProduct}
+              singleProduct={singleProduct}
+              setSingleProduct={setSingleProduct}
             />
           }
         />
 
+        {/* Cart */}
+        <Route path="/cart" element={<Cart />} />
+        
         {/* Auth */}
         <Route path="/login" element={<Login setToken={setToken} />} />
         <Route path="/register" element={<Register setToken={setToken} />} />
 
-        {/* Account */}
+        {/* Account 
         <Route
           path="/account"
           element={token ? <Account token={token} /> : <Navigate to="/login" replace />}
-        />
+        />*/}
 
         {/* Home or redirect */}
         <Route path="/" element={<Navigate to={token ? "/account" : "/login"} replace />} />
