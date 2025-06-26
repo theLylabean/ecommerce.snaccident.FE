@@ -12,8 +12,10 @@ const Register = ({ setToken }) => {
     e.preventDefault();
     setError(null);
 
+    const BASE_URL = 'http://localhost:3000';
+
     try {
-      const res = await fetch('/api/users', {
+      const res = await fetch(`${BASE_URL}/api/users`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, email, password }),
@@ -26,7 +28,7 @@ const Register = ({ setToken }) => {
       setToken(data.token);
       navigate('/account');
     } catch (err) {
-      setError('Email may already be registered.');
+      setError( err.message || 'Registration failed');
     }
   };
 
@@ -40,16 +42,6 @@ const Register = ({ setToken }) => {
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </label>
-        <br />
-        <label>
-          Email:
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </label>
