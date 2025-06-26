@@ -1,10 +1,13 @@
 import { useEffect } from 'react';
 import { getProducts } from '../api/index.js';
 import { useNavigate } from 'react-router-dom';
+import { useCart } from '../context/CartContext.jsx';
 import SearchBar from './Searchbar.jsx';
 
 const Products = ({ products, setProducts, setSingleProduct, searchTerm, setSearchTerm, searchResults, setSearchResults }) => {
     const navigate = useNavigate();
+    const { addToCart } = useCart();
+    
     const handleClick = (product) => {
         setSingleProduct(product);
         setSearchTerm('');
