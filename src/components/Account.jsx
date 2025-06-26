@@ -1,5 +1,5 @@
 import { getUserReviews } from "../api/index.js";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const Account = ({ token }) => {
     const [userReview, setUserReview] = useState([]);
