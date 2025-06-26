@@ -8,6 +8,8 @@ const SingleProduct = ({ singleProduct, setSingleProduct }) => {
     const { id } = useParams();
     const navigate = useNavigate();
 
+    const token = localStorage.getItem("authToken");
+
     useEffect(() => {
         const getProductDetailsApi = async() => {
             const response = await getSingleProduct(id);
@@ -44,7 +46,11 @@ const SingleProduct = ({ singleProduct, setSingleProduct }) => {
                     </div>
 
                     <div>
-                        <ReviewForm />
+                    {token ? (
+                        <ReviewForm/>
+                    ) : (
+                        <p>Please log in to submit a review.</p>
+                    )}
                     </div>
                 </div>
             </>
