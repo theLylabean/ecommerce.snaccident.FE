@@ -8,7 +8,7 @@ import UsersDetail from './components/users/UsersDetail.jsx';
 import Products from './components/Products.jsx';
 import Login from './components/Login.jsx';
 import Register from './components/Register.jsx';
-// import Account from './components/Account.jsx';
+import Account from './components/Account.jsx';
 import SingleProduct from './components/SingleProduct.jsx';
 import './App.css';
 
