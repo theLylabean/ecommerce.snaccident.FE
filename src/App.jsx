@@ -11,7 +11,7 @@ import Login from './components/Login.jsx';
 import Register from './components/Register.jsx';
 import Account from './components/Account.jsx';
 import SingleProduct from './components/SingleProduct.jsx';
-import './App.css';
+import './css/App.css';
 
 function App() {
   const [token, setToken] = useState(() => localStorage.getItem("authToken"));

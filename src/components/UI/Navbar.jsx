@@ -1,7 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
-import Cart from "./Cart";
-
-import "./Navbar.css";
+import Cart from './Cart.jsx';
+import '../../css/Navbar.css';
 
 const Navbar = ({ token, setToken }) => {
     const navigate = useNavigate();

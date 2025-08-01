@@ -1,4 +1,4 @@
-import { getUserReviews } from "../api/index.js";
+import { getUserReviews } from '../../api/index.js';
 import { useEffect, useState } from "react";
 
 const Account = ({ token }) => {
@@ -13,9 +13,9 @@ const Account = ({ token }) => {
     return (
         <>
             { userReview && (
-                userReview.map((review) => (
+                userReview.map((review, index) => (
                     <div key={ review.id }>
-                        <h3>{ review.comment }</h3>
+                        <h3><u>Review #{index + 1}</u>: { review.comment }</h3>
                     </div>
                 ))
             )}
