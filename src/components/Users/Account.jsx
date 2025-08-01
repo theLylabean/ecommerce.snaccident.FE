@@ -1,4 +1,4 @@
-import { getUserReviews } from "../api/index.js";
+import { getUserReviews } from '../../api/index.js';
 import { useEffect, useState } from "react";
 
 const Account = ({ token }) => {

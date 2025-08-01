@@ -3,15 +3,15 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
 import OrderList from './components/orders/OrderList.jsx';
 import OrderDetails from './components/orders/OrderDetails.jsx';
-import UsersList from './components/users/UsersList.jsx';
-import UsersDetail from './components/users/UsersDetail.jsx';
+import UsersList from './components/Users/UsersList.jsx';
+import UsersDetail from './components/Users/UsersDetail.jsx';
 import Products from './components/Products.jsx';
 import Cart from './components/Cart.jsx';
 import Login from './components/Login.jsx';
 import Register from './components/Register.jsx';
 import Account from './components/Account.jsx';
 import SingleProduct from './components/SingleProduct.jsx';
-import './App.css';
+import './css/App.css';
 
 function App() {
   const [token, setToken] = useState(() => localStorage.getItem("authToken"));
