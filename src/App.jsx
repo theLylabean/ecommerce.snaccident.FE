@@ -1,20 +1,22 @@
 import { useEffect, useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import Navbar from './components/Navbar.jsx';
+import { getAccount } from './api/usersIndex.js';
+import Navbar from './components/UI/Navbar.jsx';
 import OrderList from './components/orders/OrderList.jsx';
 import OrderDetails from './components/orders/OrderDetails.jsx';
 import UsersList from './components/Users/UsersList.jsx';
 import UsersDetail from './components/Users/UsersDetail.jsx';
-import Products from './components/Products.jsx';
-import Cart from './components/Cart.jsx';
-import Login from './components/Login.jsx';
-import Register from './components/Register.jsx';
-import Account from './components/Account.jsx';
-import SingleProduct from './components/SingleProduct.jsx';
+import Products from './components/Products/Products.jsx';
+import Cart from './components/UI/Cart.jsx';
+import Login from './components/Users/Login.jsx';
+import Register from './components/Users/Register.jsx';
+import Account from './components/Users/Account.jsx';
+import SingleProduct from './components/Products/SingleProduct.jsx';
 import './css/App.css';
 
 function App() {
   const [token, setToken] = useState(() => localStorage.getItem("authToken"));
+  const [currentUser, setCurrentUser] = useState(null);
   const [products, setProducts] = useState([]);
   const [singleProduct, setSingleProduct] = useState([]);
   const [searchTerm, setSearchTerm] = useState([]);
@@ -26,6 +28,22 @@ function App() {
       setToken(storedToken);
     }
   }, []);
+
+  useEffect(() => {
+  if (token) {
+    const getUser = async () => {
+      if (!token) return;
+      try {
+        const response = await getAccount();
+        setCurrentUser(response);
+      } catch (error) {
+        console.error('Failed to fetch user in App: ', error.message);
+        setCurrentUser(null);
+      }
+    }
+    getUser();
+  }
+}, [token]);
 
   return (
     <>
@@ -76,20 +94,55 @@ function App() {
         />
 
         {/* Cart */}
-        <Route path="/cart" element={<Cart />} />
+        <Route 
+          path="/cart" 
+          element={
+            <Cart />
+          } 
+        />
         
         {/* Auth */}
-        <Route path="/login" element={<Login setToken={setToken} />} />
-        <Route path="/register" element={<Register setToken={setToken} />} />
+        <Route 
+          path="/login" 
+          element={
+            <Login 
+              setCurrentUser={setCurrentUser}
+              setToken={setToken}
+            />
+          }
+        />
+
+        <Route 
+          path="/register" 
+          element={
+            <Register 
+              setCurrentUser={setCurrentUser}
+              setToken={setToken} 
+            />
+          }
+        />
 
         {/* Account*/}
         <Route
           path="/account"
-          element={token ? <Account token={token} /> : <Navigate to="/login" replace />}
+          element={
+            token ? 
+            <Account token={token} /> : <Navigate to="/login" replace />
+          }
         />
 
         {/* Home or redirect */}
-        <Route path="/" element={<Navigate to={token ? "/account" : "/login"} replace />} />
+        <Route 
+          path="/" 
+          element={
+            <Navigate 
+              to={
+                token ? 
+                "/account" : "/login"
+              } replace 
+            />
+          } 
+        />
       </Routes>
     </>
   );
