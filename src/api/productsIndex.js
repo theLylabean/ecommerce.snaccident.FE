@@ -19,3 +19,5 @@ const getSingleProduct = async (id) => {
         console.error({ error: 'Error getting product by id.'})
     }
 }
+
+export { getProducts, getSingleProduct }

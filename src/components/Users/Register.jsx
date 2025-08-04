@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createUser } from "../../api/usersIndex";
+import '../../css/register.css';
 
 
 const Register = ({ setToken, setCurrentUser }) => {
@@ -54,13 +55,9 @@ const Register = ({ setToken, setCurrentUser }) => {
     return (
         <>
             <div className='register-header-container'>
-                <div className='register-logo-container'>
-                    <img src={logo} alt='Logo' />
-                </div>
-                <h2>
+                <h1>
                     <u>Sign Up!</u>
-                </h2>
-                <div className='register-rainbow-line' />
+                </h1>
             </div>
             <div className='register-form-container'>
                 <form className='register-form-columns' onSubmit={handleSubmit}>

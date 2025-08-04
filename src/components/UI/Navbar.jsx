@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
-import Cart from './Cart.jsx';
-import '../../css/Navbar.css';
+import NavCart from "./NavCart.jsx";
+import '../../css/navbar.css';
 
 const Navbar = ({ token, setToken }) => {
     const navigate = useNavigate();
@@ -12,21 +12,26 @@ const Navbar = ({ token, setToken }) => {
     }
 
     return (
-        <nav className="navbar">
-                <ul>
-                    <li><Link to="/products">Products</Link></li>
-                    <li><Link to="/account">Account</Link></li>
-                    <Cart />
+        <>
+            <div className='navbar-container'>
+                <div className='navbar-left'>
+                    <Link to='/'>Home</Link>
+                    <Link to="/products">Products</Link>
+                    <Link to="/account">Account</Link>
+                </div>
+                    <NavCart />
+                <div className='navbar-right>'>
                     {token ? (
-                        <li><button onClick={handleLogout}>Logout</button></li>
+                        <button onClick={handleLogout}>Logout</button>
                     ) : (
                         <>
-                            <li><Link to="/login">Login</Link></li>
-                            <li><Link to="/register">Register</Link></li>
+                            <Link to="/login">Login</Link>
+                            <Link to="/register">Register</Link>
                         </>
                     )}
-                </ul>
-        </nav>
+                </div>
+            </div>
+        </>
     )
 };
 export default Navbar;

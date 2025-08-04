@@ -1,7 +1,7 @@
 import { getAccount, getUserReviews } from "../../api/usersIndex";
 import { useEffect, useState } from "react";
 
-const Account = () => {
+const Account = ({ setCurrentUser }) => {
     const token = localStorage.getItem('token');
     useEffect(() => {
         if (!localStorage.getItem('token')) return;

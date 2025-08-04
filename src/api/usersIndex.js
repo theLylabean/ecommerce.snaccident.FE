@@ -49,9 +49,10 @@ const getAccount = async () => {
     }
 }
 
-const getUserReviews = async (token) => {
+const getUserReviews = async () => {
+    const token = localStorage.getItem('token');
     try {
-        const res = await fetch(`${baseUrl}/users/reviews`, {
+        const res = await fetch(`${baseUrl}/products/${id}`, {
             headers: {Authorization: `Bearer ${token}`}
         })
         const result = await res.json();

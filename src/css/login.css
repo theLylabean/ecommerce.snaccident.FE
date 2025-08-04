@@ -1,0 +1,155 @@
+@font-face {
+    font-family: 'Mogra-Regular';
+    src: url('/src/fonts/Mogra-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PointeOne-Regular';
+    src: url('/src/fonts//PoiretOne-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.login-header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 17px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'PointeOne-Regular', sans-serif;
+  font-size: 1.75rem;
+  text-align: center;
+}
+
+.login-header-container h1 {
+  margin-top: 0;
+  color: var(--accent);
+  margin-bottom: 16px;
+  text-align: center;
+  font-family: 'Mogra-Regular', sans-serif;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'PointeOne-Regular', sans-serif;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.login-username,
+.login-password {
+  display: flex;
+  flex-direction: column;
+  font-family: 'PointeOne-Regular', sans-serif;
+}
+
+.login-username label,
+.login-password label {
+  font-family: 'PointeOne-Regular', sans-serif;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--accent);
+}
+
+.login-form {
+  background: var(--comment-bg);
+  border: 1px solid var(--accent);
+  border-radius: 16px;
+  padding: 17px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  transition: background 0.3s, transform 0.2s;
+  margin-bottom: 32px;
+  width: 45rem;
+  max-width: 100%;
+  text-align: center;
+}
+
+.login-form:hover {
+  background: var(--comment-hover);
+}
+
+.login-form h2 {
+  margin-top: 0;
+  color: var(--accent);
+  margin-bottom: 16px;
+  font-size: 2rem;
+}
+
+.login-form input,
+.login-form textarea {
+  width: 45rem;
+  padding: 7px;
+  margin-top: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1.25rem;
+  box-sizing: border-box;
+  font-family: 'PointeOne-Regular', sans-serif;
+}
+
+.login-form textarea {
+  height: 10rem;
+}
+
+.login-form input:focus,
+.login-form textarea:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.login-form button {
+  margin-top: 12px;
+  margin-right: 5px;
+  padding: 10px 20px;
+  font-size: 1.25rem;
+  border: none;
+  border-radius: 6px;
+  background: #a7c7e7;
+  color: #1b2b49;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-family: 'PointeOne-Regular', sans-serif;
+}
+
+.login-form button:hover {
+  opacity: 0.9;
+}
+
+.login-form .error-message {
+  color: var(--error);
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-family: 'PointeOne-Regular', sans-serif;
+}
+
+.login-rainbow-line {
+    height: 4px;
+    width: 800px;
+    margin: 10px auto;
+    border-radius: 2px;
+    background: linear-gradient(to right,
+        #f28c8c,  /* red */
+        #f6e27f,  /* yellow */
+        #b5d8a9,  /* green */
+        #a7c7e7,  /* blue */
+        #c9b6e4   /* violet */
+    );
+}
+
+.login-logo-container {
+    display: flex;
+    justify-content: center;
+}
+
+.login-logo-container img {
+    width: 250px;
+    height: auto;
+}

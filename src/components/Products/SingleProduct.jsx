@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getSingleProduct } from "../../api/index.js";
+import { getSingleProduct } from "../../api/productsIndex.js";
 import Reviews from "../reviews/reviews.jsx";
 import ReviewForm from "../reviews/reviewForm.jsx";
 

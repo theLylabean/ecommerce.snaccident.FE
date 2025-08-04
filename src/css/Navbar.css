@@ -1,36 +1,25 @@
-.navbar {
+.navbar-container {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
-    padding: 1rem 2rem;
+    padding: 1rem;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 20px;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    border-radius: 17px;
+    box-shadow: 0 0 15px rgb(0, 0, 0);
     color: white;
   }
   
-  .navbar ul {
-    list-style: none;
-    display: flex;
-    gap: 6rem;
-    margin: 0;
-    padding: 0;
-    justify-content: center;
-  }
-  
-  .navbar li {
-    text-align: center;
-  }
-  
-  .navbar a {
+  .navbar-container a {
+    padding: 1rem;
     color: white;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.2s ease;
   }
   
-  .navbar a:hover {
+  .navbar-container a:hover {
     color: #ff6ec7;
     text-shadow: 0 0 5px #ff6ec7;
   }

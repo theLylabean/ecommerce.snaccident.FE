@@ -14,6 +14,7 @@ export const CartProvider = ({ children }) => {
             body: JSON.stringify({productId})
         });
         const added = await res.json();
+        setCartItems((prev) => [...prev, added])
         return added;
     }
 

@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { getProducts } from '../../api/index.js';
+import { getProducts } from '../../api/productsIndex.js';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext.jsx';
 import SearchBar from '../UI/Searchbar.jsx';

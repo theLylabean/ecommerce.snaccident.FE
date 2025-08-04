@@ -1,0 +1,11 @@
+@font-face {
+    font-family: Mogra-Regular;
+    src: url('/src/fonts/Mogra-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.header-container h1 {
+    font-family: 'Mogra-Regular', sans-serif;
+    text-align: center;
+}

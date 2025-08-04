@@ -12,6 +12,7 @@ import Login from './components/Users/Login.jsx';
 import Register from './components/Users/Register.jsx';
 import Account from './components/Users/Account.jsx';
 import SingleProduct from './components/Products/SingleProduct.jsx';
+import Home from './components/UI/Home.jsx';
 import './css/App.css';
 
 function App() {
@@ -127,21 +128,17 @@ function App() {
           path="/account"
           element={
             token ? 
-            <Account token={token} /> : <Navigate to="/login" replace />
+            <Account 
+              token={token}
+              setCurrentUser={setCurrentUser}
+            /> : <Navigate to="/login" replace />
           }
         />
 
         {/* Home or redirect */}
         <Route 
-          path="/" 
-          element={
-            <Navigate 
-              to={
-                token ? 
-                "/account" : "/login"
-              } replace 
-            />
-          } 
+          path="/"
+          element={ <Home /> }
         />
       </Routes>
     </>
