@@ -16,7 +16,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 17px;
+    padding-top: 17px;
+    padding-bottom: 17px;
     color: #1b2b49;
     font-family: 'PointeOne-Regular', sans-serif;
     font-size: 1.5rem;
@@ -35,7 +36,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: var(--text);
+    color: aliceblue;
     font-family: 'PointeOne-Regular', sans-serif;
     font-size: 1.5rem;
     text-align: center;
@@ -99,7 +100,8 @@
 }
 
 .login-form button:hover {
-    opacity: 0.9;
+    color: #ff6ec7;
+    text-shadow: 0 0 5px #ff6ec7;
 }
 
 .login-error-container {

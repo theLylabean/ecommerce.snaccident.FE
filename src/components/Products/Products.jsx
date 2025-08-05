@@ -3,6 +3,7 @@ import { getProducts } from '../../api/productsIndex.js';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext.jsx';
 import SearchBar from '../UI/Searchbar.jsx';
+import '../../css/products.css';
 
 const Products = ({ products, setProducts, setSingleProduct, searchTerm, setSearchTerm, searchResults, setSearchResults }) => {
     const navigate = useNavigate();
@@ -29,7 +30,7 @@ const Products = ({ products, setProducts, setSingleProduct, searchTerm, setSear
 
     return (
         <>
-            <div className='products-header'>
+            <div className='products-header-container'>
                 <h1>
                     A Snaccident Waiting to Happen!
                 </h1>
@@ -45,8 +46,8 @@ const Products = ({ products, setProducts, setSingleProduct, searchTerm, setSear
                     setSearchTerm={setSearchTerm}
                 />
             </div>
-            <div className='products-page'>
-                <div className='products-container'>
+            <div className='products-page-container'>
+                <div className='products-page'>
                     {
                         searchResults?.length > 0 ? (
                             searchResults.map((product) => {

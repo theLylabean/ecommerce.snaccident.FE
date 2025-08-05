@@ -1,26 +1,55 @@
 .navbar-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
-    padding: 1rem;
-    margin-bottom: 2rem;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 20px;
-    border-radius: 17px;
-    box-shadow: 3px 4px 6px 4px gray;
-    color: white;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: .5rem;
+  z-index: 1000;
+  background: linear-gradient(to right, #1b2b49, #689bff);
+  padding: 1rem;
+  margin-bottom: 2rem;
+  font-size: 1.25rem;
+  font-family: 'PointeOne-Regular', sans-serif;
+  border-radius: 17px;
+  box-shadow: 3px 4px 6px 4px gray;
+  color: aliceblue;
+}
   
-  .navbar-container a {
-    padding: 1rem;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.2s ease;
-  }
+.navbar-container a {
+  color: aliceblue;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s ease;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   
-  .navbar-container a:hover {
-    color: #ff6ec7;
-    text-shadow: 0 0 5px #ff6ec7;
-  }
+}
+  
+.navbar-container a:hover {
+  color: #ff6ec7;
+  text-shadow: 0 0 5px #ff6ec7;
+}
+
+.cart-icon:hover {
+  color: #ff6ec7;
+  text-shadow: 0 0 5px #ff6ec7;
+}
+
+.navbar-container button {
+  font-size: 1.25rem;
+  font-weight: bold;
+  font-family: 'PointeOne-Regular', sans-serif;
+  border: none;
+  border-radius: 7px;
+  background: #1b2b49;
+  color: aliceblue;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  padding: 7px 17px 7px 17px;
+}
+
+.navbar-container button:hover {
+  color: #ff6ec7;
+  text-shadow: 0 0 5px #ff6ec7;
+}

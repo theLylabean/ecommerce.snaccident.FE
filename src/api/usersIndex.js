@@ -49,17 +49,5 @@ const getAccount = async () => {
     }
 }
 
-const getUserReviews = async () => {
-    const token = localStorage.getItem('token');
-    try {
-        const res = await fetch(`${baseUrl}/products/${id}`, {
-            headers: {Authorization: `Bearer ${token}`}
-        })
-        const result = await res.json();
-        return result;
-    } catch (error) {
-        console.error({ error: 'Error getting review by user id.'})
-    }
-}
 
-export { createUser, getLogin, getAccount, getUserReviews }
+export { createUser, getLogin, getAccount }
