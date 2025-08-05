@@ -1,14 +1,16 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getLogin } from '../../api/usersIndex';
+import { useCart } from '../../context/CartContext';
 import "../../css/Login.css";
 
 const Login = ({ setCurrentUser, setToken }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [loginError, setLoginError] = useState(null);
+    const { loadCart } = useCart();
     const navigate = useNavigate();
-
+    
     const handleLoginSubmit = async (e) => {
         e.preventDefault();
         setLoginError('');
@@ -18,6 +20,7 @@ const Login = ({ setCurrentUser, setToken }) => {
                 localStorage.setItem('token', res.token);
                 setToken(res.token);
                 setCurrentUser(res.user);
+                await loadCart();
                 navigate('/account');
             } else {
                 setLoginError(res.message || '** Invalid username or password. **')

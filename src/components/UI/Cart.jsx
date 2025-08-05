@@ -10,6 +10,8 @@ const Cart = () => {
             return total + (item.price * item.quantity);
         }, 0).toFixed(2);
     };
+    console.log("🛒 cartItems in Cart:", cartItems);
+
 
     return (
         <div className="cart-page">
@@ -19,7 +21,7 @@ const Cart = () => {
                 <p>Your cart is empty.</p>
             ) : (
                 <>
-                    <ul className="cart-items">
+                    <div className="cart-items">
                         {cartItems.map((item) => (
                             <li key={item.id} className="cart-item">
                                 <img src={item.image_url} alt={item.title} className="cart-image" />
@@ -32,7 +34,7 @@ const Cart = () => {
                                 </div>
                             </li>
                         ))}
-                    </ul>
+                    </div>
                     <div className="cart-summary">
                         <h2>Total: ${getTotalPrice()}</h2>
                         <button onClick={clearCart}>Clear Cart</button>

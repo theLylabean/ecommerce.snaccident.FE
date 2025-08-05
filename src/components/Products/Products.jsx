@@ -2,12 +2,13 @@ import { useEffect } from 'react';
 import { getProducts } from '../../api/productsIndex.js';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext.jsx';
+import { addToCart } from '../../api/productsIndex.js';
 import SearchBar from '../UI/Searchbar.jsx';
 import '../../css/products.css';
 
-const Products = ({ products, setProducts, setSingleProduct, searchTerm, setSearchTerm, searchResults, setSearchResults }) => {
+const Products = ({ products, currentUser, setProducts, setSingleProduct, searchTerm, setSearchTerm, searchResults, setSearchResults }) => {
     const navigate = useNavigate();
-    const { addToCart } = useCart();
+    const { cartItems, setCartItems } = useCart();
 
     const handleClick = (product) => {
         setSingleProduct(product);
@@ -16,8 +17,17 @@ const Products = ({ products, setProducts, setSingleProduct, searchTerm, setSear
         navigate(`/products/${product.id}`);
     };
 
-    const handleAddToCart = (product) => {
-        addToCart(product.id);
+    const handleAddToCart = async (productId) => {
+        if (!currentUser || !currentUser.id) {
+            console.warn('⛔ User not ready. Try again in a sec.')
+            return;
+        }
+        try {
+            const addedItem = await addToCart(productId);
+            setCartItems((prev) => [...prev, addedItem]);
+        } catch (error) {
+            console.error('❌ Failed to add to cart in UI: ', error.message);
+        }
     };
 
     useEffect(() => {
@@ -60,8 +70,8 @@ const Products = ({ products, setProducts, setSingleProduct, searchTerm, setSear
                                         <p>{quantity}</p>
                                         <p>{price}</p>
                                         <p>{flavor}</p>
-                                        <button onClick={() => handleClick(product)}>More Info</button>
-                                        <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
+                                        <button onClick={() => handleClick(product.id)}>More Info</button>
+                                        <button onClick={() => handleAddToCart(product.id)}>Add to Cart</button>
                                     </div>
                                 );
                             })
@@ -76,8 +86,13 @@ const Products = ({ products, setProducts, setSingleProduct, searchTerm, setSear
                                         <p>Quantity: {quantity}</p>
                                         <p>Price: ${price}</p>
                                         <p>Flavor: {flavor}</p>
-                                        <button onClick={() => handleClick(product)}>More Info</button>
-                                        <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
+                                        <button onClick={() => handleClick(product.id)}>More Info</button>
+                                        <button 
+                                            onClick={() =>  handleAddToCart(product.id)}
+                                            disabled={ !currentUser || !currentUser.id } 
+                                        >
+                                            Add to Cart
+                                        </button>
                                     </div>
                                 );
                             })

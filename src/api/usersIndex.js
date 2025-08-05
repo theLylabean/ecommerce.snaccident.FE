@@ -11,6 +11,7 @@ const createUser = async ({first_name, last_name, email, username, password}) =>
         return result;
     } catch (error) {
         console.error(error.message);
+        throw error;
     }
 }
 
@@ -35,19 +36,43 @@ const getAccount = async () => {
         const res = await fetch(`${baseUrl}/account`, {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             }
         });
-    if (!res.ok) {
+    if (!res.ok)  {
+        const errorText = await res.text();
+        console.error('❌ getAccount failed: ', errorText);
         throw new Error(`Failed to fetch account details: ${res.status}`);
     }
-    const result = await res.json();
-    return result;
+    const user = await res.json();
+    return user;
     } catch (error) {
     console.error(error.message);
+    throw error;
+    }
+}
+
+const getCartItems = async () => {
+    const token = localStorage.getItem('token');
+    try {
+        const res = await fetch(`${baseUrl}/account/cartItems`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        if (!res.ok) {
+            const errorText = await res.text();
+            console.error(`❌ Failed to fetch cart items: ${res.status} - ${errorText}`);
+            throw new Error('Failed to fetch cart items');
+        }
+        const userCart = await res.json();
+        return userCart;
+    } catch (error) {
+        console.error(error.message);
+        throw error;
     }
 }
 
 
-export { createUser, getLogin, getAccount }
+export { createUser, getLogin, getAccount, getCartItems }

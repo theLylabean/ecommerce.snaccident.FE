@@ -2,13 +2,14 @@ import { Link, useNavigate } from "react-router-dom";
 import NavCart from "./NavCart.jsx";
 import '../../css/navbar.css';
 
-const Navbar = ({ token, setToken }) => {
+const Navbar = ({ token, setToken, setCurrentUser }) => {
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        localStorage.removeItem("authToken");
+        localStorage.removeItem('token');
         setToken(null);
-        navigate("/login");
+        setCurrentUser(null)
+        navigate('/');
     }
 
     return (

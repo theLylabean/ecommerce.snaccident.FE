@@ -16,58 +16,65 @@ import Home from './components/UI/Home.jsx';
 import './css/app.css';
 
 function App() {
-  const [token, setToken] = useState(() => localStorage.getItem("authToken"));
+  const [token, setToken] = useState(() => localStorage.getItem('token') || null);
   const [currentUser, setCurrentUser] = useState(null);
   const [products, setProducts] = useState([]);
   const [singleProduct, setSingleProduct] = useState([]);
   const [searchTerm, setSearchTerm] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
 
-  useEffect(() => {
-    const storedToken = localStorage.getItem("authToken");
-    if (storedToken) {
-      setToken(storedToken);
-    }
-  }, []);
+ useEffect(() => {
+  const storedToken = localStorage.getItem("token");
+  if (storedToken) {
+    setToken(storedToken);
+  }
+}, []);
 
-  useEffect(() => {
+useEffect(() => {
   if (token) {
     const getUser = async () => {
-      if (!token) return;
-      try {
-        const response = await getAccount();
-        setCurrentUser(response);
-      } catch (error) {
-        console.error('Failed to fetch user in App: ', error.message);
-        setCurrentUser(null);
-      }
-    }
+      const response = await getAccount();
+      setCurrentUser(response);
+    };
     getUser();
   }
 }, [token]);
 
   return (
     <>
-      <Navbar token={token} setToken={setToken} />
+      <Navbar 
+        token={token} 
+        setToken={setToken}
+        currentUser={currentUser}
+        setCurrentUser={setCurrentUser}
+      />
       <Routes>
         {/* Orders */}
         <Route
           path="/orders"
-          element={token ? <OrderList token={token} /> : <Navigate to="/login" replace />}
+          element={
+            token ? 
+            <OrderList token={token} /> : <Navigate to="/login" replace />}
         />
         <Route
           path="/orders/:id"
-          element={token ? <OrderDetails token={token} /> : <Navigate to="/login" replace />}
+          element={
+            token ? 
+            <OrderDetails token={token} /> : <Navigate to="/login" replace />}
         />
 
         {/* Users */}
         <Route
           path="/users"
-          element={token ? <UsersList token={token} /> : <Navigate to="/login" replace />}
+          element={
+            token ? 
+            <UsersList token={token} /> : <Navigate to="/login" replace />}
         />
         <Route
           path="/users/:id"
-          element={token ? <UsersDetail token={token} /> : <Navigate to="/login" replace />}
+          element={
+            token ? 
+            <UsersDetail token={token} /> : <Navigate to="/login" replace />}
         />
         <Route
           path='/products'
@@ -81,6 +88,7 @@ function App() {
               setSearchResults={setSearchResults}
               searchTerm={searchTerm}
               setSearchTerm={setSearchTerm}
+              currentUser={currentUser}
             />
           }
         />
@@ -130,6 +138,7 @@ function App() {
             token ? 
             <Account 
               token={token}
+              currentUser={currentUser}
               setCurrentUser={setCurrentUser}
             /> : <Navigate to="/login" replace />
           }

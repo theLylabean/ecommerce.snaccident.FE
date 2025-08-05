@@ -11,6 +11,7 @@ const NavCart = () => {
         <Link to='/cart' className='cart-icon-link'>
             <div className='cart-icon-container'>
                 <FaShoppingCart className='cart-icon' />
+                &nbsp;
                 { cartItemCount > 0 && (
                     <span className='cart-badge'>{ cartItemCount }</span>
                 ) }
