@@ -13,7 +13,7 @@ import Register from './components/Users/Register.jsx';
 import Account from './components/Users/Account.jsx';
 import SingleProduct from './components/Products/SingleProduct.jsx';
 import Home from './components/UI/Home.jsx';
-import './css/App.css';
+import './css/app.css';
 
 function App() {
   const [token, setToken] = useState(() => localStorage.getItem("authToken"));

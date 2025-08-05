@@ -20,11 +20,11 @@ const Login = ({ setCurrentUser, setToken }) => {
                 setCurrentUser(res.user);
                 navigate('/account');
             } else {
-                setLoginError(res.message || '** Invalid username or password **')
+                setLoginError(res.message || '** Invalid username or password. **')
             }
         } catch (error) {
             console.error('Login error: ', error.message);
-            setLoginError('Login failed. Please try again.');
+            setLoginError('** Login failed. Please try again. **');
         }
     }
 
@@ -61,7 +61,6 @@ const Login = ({ setCurrentUser, setToken }) => {
                             onChange={ e => setPassword(e.target.value) }
                             placeholder='Enter Password Here'
                         />
-                        {loginError && <p>{loginError}</p>}
                         <br />
                         <button
                             className='submit-button'
@@ -71,6 +70,9 @@ const Login = ({ setCurrentUser, setToken }) => {
                         </button>
                     </div>
                 </form>
+            </div>
+            <div className='login-error-container'>
+                { loginError && <p className='login-error-message'>{ loginError }</p> }
             </div>
         </>
     )

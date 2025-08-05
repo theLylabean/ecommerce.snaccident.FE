@@ -4,10 +4,11 @@
     align-items: center;
     background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
     padding: 1rem;
+    margin-bottom: 2rem;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 20px;
     border-radius: 17px;
-    box-shadow: 0 0 15px rgb(0, 0, 0);
+    box-shadow: 3px 4px 6px 4px gray;
     color: white;
   }
   

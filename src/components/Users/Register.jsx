@@ -29,11 +29,11 @@ const Register = ({ setToken, setCurrentUser }) => {
 
         const { first_name, last_name, email, username, password, confirmPassword } = newUser;
         if (!first_name || !last_name || !email || !username || !password || !confirmPassword) {
-            setSignupError('Please fill out all fields.');
+            setSignupError('** Please fill out all fields. **');
             return;
         }
         if (password !== confirmPassword) {
-            setSignupError('Passwords do not match.');
+            setSignupError('** Passwords do not match. **');
             return;
         }
         try {
@@ -44,11 +44,11 @@ const Register = ({ setToken, setCurrentUser }) => {
                 setToken(res.token);
                 navigate('/account');
             } else {
-                setSignupError(res.message || '** Invalid username or password **')
+                setSignupError(res.message || '** Registor Error. Please try again. **')
             }
         } catch (error) {
-            console.error('Register error.', error.message);
-            setSignupError('Register new user failed. Please try again.');
+            console.error('Register error: ', error.message);
+            setSignupError('** Register new user failed. Please try again. **');
         }
     }
 
@@ -141,9 +141,9 @@ const Register = ({ setToken, setCurrentUser }) => {
                         Create New User Account
                     </button>
                 </form>
-                <div className='error-container'>
-                    { signupError && <p className='error-message'>{ signupError }</p> }
-                </div>
+            </div>
+            <div className='register-error-container'>
+                { signupError && <p className='register-error-message'>{ signupError }</p> }
             </div>
         </>
     )

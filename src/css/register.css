@@ -17,10 +17,9 @@
   flex-direction: column;
   align-items: center;
   padding: 17px;
-  background: var(--bg);
-  color: var(--text);
+  color: #1b2b49;
   font-family: 'PointeOne-Regular', sans-serif;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   text-align: center;
 }
 
@@ -37,22 +36,18 @@
   flex-direction: column;
   align-items: center;
   padding: 17px;
-  background: var(--comment-bg);
   color: var(--text);
   font-family: 'PointeOne-Regular', sans-serif;
   font-size: 1.55rem;
   text-align: center;
   width: 45rem;
-  border: 1px solid var(--accent);
+  background: gray;
+  border: 1px solid #1b2b49;
   border-radius: 16px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
   transition: background 0.3s, transform 0.2s;
   margin-bottom: 32px;
   margin: 0 auto;
-}
-
-.register-form-container:hover {
-  background: var(--comment-hover);
 }
 
 .register-form-columns {
@@ -77,9 +72,8 @@
 
 .register-form-field label {
   font-family: 'PointeOne-Regular', sans-serif;
-  font-weight: 600;
+  font-size: 1.25rem;
   margin-bottom: 6px;
-  color: var(--accent);
 }
 
 .register-form-field input {
@@ -87,15 +81,14 @@
   padding: 7px;
   margin-top: 10px;
   margin-bottom: 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1.25rem;
+  border: 1px solid #1b2b49;
+  border-radius: 7px;
+  font-size: 1rem;
   box-sizing: border-box;
   font-family: 'PointeOne-Regular', sans-serif;
 }
 
 .register-form input:focus {
-  border-color: var(--accent);
   outline: none;
 }
 
@@ -105,17 +98,12 @@
   padding: 10px 20px;
   font-size: 1.25rem;
   border: none;
-  border-radius: 6px;
-  background: #a7c7e7;
-  color: #1b2b49;
+  border-radius: 7px;
+  background: #1b2b49;
+  color: aliceblue;
   cursor: pointer;
   transition: background 0.3s;
-  align-items: center;
   font-family: 'PointeOne-Regular', sans-serif;
-}
-
-.register-form-button button:hover {
-  opacity: 0.9;
 }
 
 .register-error-container {
@@ -124,30 +112,9 @@
 }
 
 .register-error-message {
-  color: var(--error);
+  color: red;
+  margin-bottom: 10px;
   font-weight: bold;
-}
-
-.register-rainbow-line {
-    height: 4px;
-    width: 800px;
-    margin: 10px auto;
-    border-radius: 2px;
-    background: linear-gradient(to right,
-        #f28c8c,  /* red */
-        #f6e27f,  /* yellow */
-        #b5d8a9,  /* green */
-        #a7c7e7,  /* blue */
-        #c9b6e4   /* violet */
-    );
-}
-
-.register-logo-container {
-    display: flex;
-    justify-content: center;
-}
-
-.register-logo-container img {
-    width: 250px;
-    height: auto;
+  font-family: 'PointeOne-Regular', sans-serif;
+  font-size: 1.5rem;
 }

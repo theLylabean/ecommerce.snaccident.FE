@@ -5,6 +5,17 @@
     font-style: normal;
 }
 
+.header-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 17px;
+    color: #1b2b49;
+    font-family: 'PointeOne-Regular', sans-serif;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
 .header-container h1 {
     font-family: 'Mogra-Regular', sans-serif;
     text-align: center;
